@@ -1,0 +1,342 @@
+/* ----------- REGLAS GENERALES ------------ */
+
+* {
+    box-sizing: border-box;
+    font-family: Cambria, Georgia, serif;
+    color: #6c6c6c;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: beige;
+    padding: 3rem 6rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background-color: rgb(9, 47, 9);
+    padding: 1rem 1.5rem;
+    border-style: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.opcional {
+    display: none;
+}
+
+
+/* ----------- HEADER ------------ */
+
+header {
+    margin-bottom: 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    list-style-type: none;
+}
+
+.item {
+display: inline;
+position: relative;
+padding: 0 1.5rem 1.5rem 1rem;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -1rem;
+    width: 360%;
+    padding: 2rem;
+    list-style-type: none;
+    font-size: 0.9rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.submenu::after {
+    content: '';  /* este elemento despues del submenu va a ser el triangulo sobre el mismo */
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 15%; /* posicionando el triangulo */
+    margin-top: -10px;
+    border-bottom: solid 10px white;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+}
+
+.submenu li {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+.contenedor-subitem {
+    display: flex;
+}
+
+.submenu img {
+    padding-right: 0.5rem;
+}
+
+.submenu strong {
+    color: black;
+}
+
+.contenedor-nav > a {
+    margin-right: 1rem;
+}
+
+.contenedor-nav > a:hover {
+    text-decoration: underline;
+}
+
+
+/* ----------- NAV FUNCIONALIDADES HOVER ------------ */
+
+.item:hover > .submenu {
+    display: block;
+}
+
+.submenu li:hover {
+    background-color: #eee;
+}
+
+
+/* ----------- MAIN ------------ */
+
+.grid-container {
+    display: grid;
+    gap: 5%;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 1;
+    margin-bottom: 7%;
+}
+
+.grid-item1 {
+    grid-column: 1 / 3;
+    padding-top: 1rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.resaltar {
+    color: orange;
+}
+
+.grid-item1 > p {
+    margin-bottom: 1rem;
+}
+
+.grid-item1 > button {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.en-linea {
+    display: inline;
+    margin-bottom: 0;
+}
+
+.grid-item1 > img {
+    display: inline;
+    margin-left: 1rem;
+}
+
+.grid-item2 > img {
+    width: 100%;
+    object-fit: contain;
+}
+
+
+/* ----------- FOOTER ------------ */
+
+footer > p {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.flex-container { 
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-container img {
+    width: 20%;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+}
+
+
+@media screen and (max-width: 1100px) {
+
+    /* --------- REGLAS GENERALES ---------- */
+
+    body {
+        padding: 3rem 1rem;
+    }
+
+    /* --------- HEADER ------------ */
+
+    .item {
+        padding: 0 1rem 1rem 0.5rem;
+    }
+
+    .submenu {
+        width: 340%;
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .titulo-item,
+    .contenedor-nav > a {
+        font-size: 0.9rem;
+    }
+
+
+
+    /* --------- MAIN -------------- */
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+}
+
+
+@media screen and (max-width: 750px) {
+
+    /* --------- REGLAS GENERALES ----------- */
+
+
+
+    /* --------- HEADER ----------- */
+
+    .menu-mobile {
+        cursor: pointer;
+    }
+
+    .menu {
+        position: absolute;
+        width: 90%;
+        top: 3rem;
+        left: 1rem;
+        z-index: 1;
+        background-color: white;
+        border-radius: 0.5rem;
+    }
+
+    .item {
+        display: block;
+    }
+
+   .item:first-child {
+        padding-top: 1rem;
+   }
+
+    .titulo-item {
+        font-size: 1.2rem;
+        font-weight: 600;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    .titulo-item::after {
+        content: '';
+        position: relative;
+        top: 12px;
+        left: 8px;
+        /*defino una variable para el color asi puedo modificarlo despues en js */
+        border-top: solid 4px var(--colorTriangulo, #6c6c6c); 
+        border-left: solid 4px transparent;
+        border-right: solid 4px transparent;
+        cursor: pointer;
+    }
+
+    .submenu {
+        display: block;
+        width: 100%;
+        padding: 0 1rem;
+        max-height: 0;
+        overflow: hidden;
+        top: 100%;
+        left: 0;
+        z-index: -1;
+        transition: max-height 1s ease-out;
+    }
+
+    /*  ------ FUNCIONALIDADES NAV ------- */
+    
+    .contenedor-equis {
+        display: inline;
+        position: relative;
+        float: right;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    .equis {
+        display: block;
+        width: 15px;
+        height: 3px;
+        background-color: #6c6c6c;
+    }
+
+    .izquierda {
+        transform: rotate(-45deg);
+        position: absolute;
+      
+    }
+
+    .derecha {
+        transform: rotate(45deg);
+    }
+
+
+    /* --------- MAIN ----------- */
+
+    .grid-container {
+        margin-bottom: 15%;
+    }
+
+    .grid-item1 {
+        grid-column: 1 / 4;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    
+    /* --------- FOOTER ---------- */
+
+    .flex-container {
+        justify-content: space-between;
+    }
+
+    .flex-container img {
+        width: 45%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
