@@ -48,21 +48,24 @@ boton_hamburguesa.addEventListener("click", function(){
 
 /*EVENTO PARA QUE DESAPAREZCA EL MENU AL CLIQUEAR AFUERA DEL MISMO */
 document.addEventListener("click", function(e){
-    switch (e.target.classList.value) {
-        case "menu":
-        case "menu-mobile":
-        case "item":
-        case "submenu":
-        case "titulo-item":
-        case "contenedor-equis":
-        case "equis izquierda":
-        case "equis derecha":
-            break;
-        default:
-            menu.classList.add('opcional');
-            break;    
+    if (window.innerWidth <= 750) {
+        switch (e.target.classList.value) {
+            case "menu":
+            case "menu-mobile":
+            case "item":
+            case "submenu":
+            case "titulo-item":
+            case "contenedor-equis":
+            case "equis izquierda":
+            case "equis derecha":
+                break;
+            default:
+                menu.classList.add('opcional');
+                break;    
+        }
     }
 })
+
 
 /* EVENTO PARA QUE APAREZCA EL SUBMENU, QUITE EL TRIANGULO Y AGREGUE UNA EQUIS AL CLIQUEAR LOS ITEMS */
 
